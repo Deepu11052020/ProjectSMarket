@@ -23,6 +23,8 @@ libraryDependencies += "org.apache.spark" %% "spark-mllib" % "1.4.1"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.7"
 libraryDependencies += "org.postgresql" % "postgresql" % "42.2.23"
 libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.28"
+libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.27" // Use the appropriate version
+
 
 lazy val root = (project in file("."))
   .settings(
