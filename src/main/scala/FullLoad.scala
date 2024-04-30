@@ -71,7 +71,7 @@ object FullLoad {
     branchdf_cleaned.write.saveAsTable("ukusmar.Branch2")
     productdf_cleaned.write.saveAsTable("ukusmar.ProductLine2")
     println("tables loaded into Hive")
-
+/*
     //Postgres SQL
     superMarketdf_cleaned.write.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb")
       .option("dbtable", "superMarket").option("driver", "org.postgresql.Driver").option("user", "consultants")
@@ -83,7 +83,7 @@ object FullLoad {
       .option("dbtable", "productLine").option("driver", "org.postgresql.Driver").option("user", "consultants")
       .option("password", "WelcomeItc@2022").save()
     println("tables loaded into DB")
-
+*/
     // .mode("overwrite")
     //Mysql
     val url = "jdbc:mysql://localhost:3306/testdb"
