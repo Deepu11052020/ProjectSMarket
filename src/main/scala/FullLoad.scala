@@ -84,7 +84,7 @@ object FullLoad {
       .option("password", "WelcomeItc@2022").save()
     println("tables loaded into DB")
 */
-    /*// .mode("overwrite")
+    // .mode("overwrite")
     //Mysql
     val url = "jdbc:mysql://localhost:3306/testdb"
     val username = "root"
@@ -95,10 +95,10 @@ object FullLoad {
     val superMarket = "superMarket"
     val branch ="branch"
     val ProductLine ="ProductLine"
-    superMarketdf_cleaned.write.mode("overwrite").jdbc(url, superMarket, connectionProperties)
-    branchdf_cleaned.write.mode("overwrite").jdbc(url,branch,connectionProperties)
-    productdf_cleaned.write.mode("overwrite").jdbc(url, ProductLine, connectionProperties)
+    superMarketdf_cleaned.write.jdbc(url, superMarket, connectionProperties)
+    branchdf_cleaned.write.jdbc(url,branch,connectionProperties)
+    productdf_cleaned.write.jdbc(url, ProductLine, connectionProperties)
 
-*/
+
   }
 }
