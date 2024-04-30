@@ -86,6 +86,7 @@ object FullLoad {
 */
     // .mode("overwrite")
     //Mysql
+    /*
     val url = "jdbc:mysql://localhost:3306/testdb"
     val username = "root"
     val password = "Kittians@01"
@@ -98,7 +99,7 @@ object FullLoad {
     superMarketdf_cleaned.write.jdbc(url, superMarket, connectionProperties)
     branchdf_cleaned.write.jdbc(url,branch,connectionProperties)
     productdf_cleaned.write.jdbc(url, ProductLine, connectionProperties)
-
+*/
 
   }
 }
