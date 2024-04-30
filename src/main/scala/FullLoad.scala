@@ -61,27 +61,27 @@ object FullLoad {
     productdf_cleaned.show()
 
     //HDFS
-    superMarketdf_cleaned.coalesce(1).write.option("header", true).mode("overwrite").csv(args(1))
-    branchdf_cleaned.coalesce(1).write.option("header", true).mode("overwrite").csv(args(3))
-    productdf_cleaned.coalesce(1).write.option("header", true).mode("overwrite").csv(args(5))
+    superMarketdf_cleaned.coalesce(1).write.option("header", true).csv(args(1))
+    branchdf_cleaned.coalesce(1).write.option("header", true).csv(args(3))
+    productdf_cleaned.coalesce(1).write.option("header", true).csv(args(5))
     println("tables loaded into HDFS")
 
     //Hive
-    superMarketdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.superMarket2")
-    branchdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.Branch2")
-    productdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.ProductLine2")
+    superMarketdf_cleaned.write.saveAsTable("ukusmar.superMarket2")
+    branchdf_cleaned.write.saveAsTable("ukusmar.Branch2")
+    productdf_cleaned.write.saveAsTable("ukusmar.ProductLine2")
     println("tables loaded into Hive")
 
     //Postgres SQL
     superMarketdf_cleaned.write.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb")
       .option("dbtable", "superMarket").option("driver", "org.postgresql.Driver").option("user", "consultants")
-      .option("password", "WelcomeItc@2022").mode("overwrite").save()
+      .option("password", "WelcomeItc@2022").save()
     branchdf_cleaned.write.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb")
       .option("dbtable", "branch").option("driver", "org.postgresql.Driver").option("user", "consultants")
-      .option("password", "WelcomeItc@2022").mode("overwrite").save()
+      .option("password", "WelcomeItc@2022").save()
     productdf_cleaned.write.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb")
       .option("dbtable", "productLine").option("driver", "org.postgresql.Driver").option("user", "consultants")
-      .option("password", "WelcomeItc@2022").mode("overwrite").save()
+      .option("password", "WelcomeItc@2022").save()
     println("tables loaded into DB")
 
     // .mode("overwrite")
