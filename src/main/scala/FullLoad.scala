@@ -61,15 +61,15 @@ object FullLoad {
     productdf_cleaned.show()
 
     //HDFS
-    superMarketdf_cleaned.coalesce(1).write.option("header", true).csv(args(1))
-    branchdf_cleaned.coalesce(1).write.option("header", true).csv(args(3))
-    productdf_cleaned.coalesce(1).write.option("header", true).csv(args(5))
+    superMarketdf_cleaned.coalesce(1).write.mode("overwrite").option("header", true).csv(args(1))
+    branchdf_cleaned.coalesce(1).write.mode("overwrite").option("header", true).csv(args(3))
+    productdf_cleaned.coalesce(1).write.mode("overwrite").option("header", true).csv(args(5))
     println("tables loaded into HDFS")
 
     //Hive
-    superMarketdf_cleaned.write.saveAsTable("ukusmar.superMarket2")
-    branchdf_cleaned.write.saveAsTable("ukusmar.Branch2")
-    productdf_cleaned.write.saveAsTable("ukusmar.ProductLine2")
+    superMarketdf_cleaned.write.mode("overwrite")saveAsTable("ukusmar.superMarket2")
+    branchdf_cleaned.write.mode("overwrite")saveAsTable("ukusmar.Branch2")
+    productdf_cleaned.write.mode("overwrite")saveAsTable("ukusmar.ProductLine2")
     println("tables loaded into Hive")
 /*
     //Postgres SQL
@@ -84,7 +84,7 @@ object FullLoad {
       .option("password", "WelcomeItc@2022").save()
     println("tables loaded into DB")
 */
-    // .mode("overwrite")
+    /*// .mode("overwrite")
     //Mysql
     val url = "jdbc:mysql://localhost:3306/testdb"
     val username = "root"
@@ -99,6 +99,6 @@ object FullLoad {
     branchdf_cleaned.write.mode("overwrite").jdbc(url,branch,connectionProperties)
     productdf_cleaned.write.mode("overwrite").jdbc(url, ProductLine, connectionProperties)
 
-
+*/
   }
 }
